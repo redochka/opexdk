@@ -1,0 +1,102 @@
+{{ header }}{{ column_left }}
+
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="tv-module-form" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }} __VERSION__</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    {% if error.error_warning %}
+    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error.error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ heading_title }}</h3>
+        </div>
+
+        <div class="panel-body">
+
+          <form action="{{ action }}" id="tv-module-form" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label" style="padding-top: 0"
+                       for="__MODULE_UNDERSCORE___cfg_extension_status">Module status</label>
+                <div class="col-sm-9">
+                    <div style="border: none; box-shadow: none;">
+
+                        <label style="margin-right: 11px;">
+                            <input style="vertical-align: top;" type="radio" name="__MODULE_UNDERSCORE___cfg_extension_status"
+                                   value="1" {{ __MODULE_UNDERSCORE___cfg_extension_status ? 'checked' : '' }}
+                                   id="__MODULE_UNDERSCORE___cfg_extension_status"/>
+                            {{ "Enabled" }}
+                        </label>
+                        <label style="margin-right: 11px;">
+                            <input style="vertical-align: top;" type="radio" name="__MODULE_UNDERSCORE___cfg_extension_status"
+                                   value="0" {{ __MODULE_UNDERSCORE___cfg_extension_status ? '' : 'checked' }} />
+                            {{ "Disabled" }}
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="__MODULE_UNDERSCORE___cfg_log"><span data-toggle="tooltip" title="Verbose logs will be printed to the opencart log file. Useful when you need to figure out what is going on.">Enable verbose logs:</span></label>
+              <div class="col-sm-9">
+                  <div class="radio">
+
+                      <label style="margin-right: 11px;">
+                        <input style="vertical-align: top;" type="radio" name="__MODULE_UNDERSCORE___cfg_log" value="1" {{ __MODULE_UNDERSCORE___cfg_log ? 'checked' : '' }} id="__MODULE_UNDERSCORE___cfg_log" />
+                        {{ text_yes }}
+                      </label>
+                      <span style="display: inline-block; width: 33px"></span>
+                      <label style="margin-right: 11px;">
+                        <input style="vertical-align: top;" type="radio" name="__MODULE_UNDERSCORE___cfg_log" value="0" {{ __MODULE_UNDERSCORE___cfg_log ? '' : 'checked' }} />
+                        {{ text_no }}
+                      </label>
+
+                  </div>
+              </div>
+            </div>
+
+          </form>
+
+        </div><!-- .panel-body -->
+     </div>
+  </div><!-- .container-fluid -->
+
+
+  <div class="page-headerX">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="tv-module-form" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a>
+      </div>
+
+      <!-- include_social_login_fragment_b0c4d -->
+
+    </div>
+  </div>
+
+
+</div><!-- #content -->
+
+{{ footer }}
+
+<!--
+<script type="text/javascript" src="view/javascript/script.js?v=1"></script>
+ -->

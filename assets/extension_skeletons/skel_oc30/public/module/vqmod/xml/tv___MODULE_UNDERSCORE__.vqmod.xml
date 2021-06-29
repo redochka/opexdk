@@ -1,0 +1,19 @@
+<modification>
+    
+    <id><![CDATA[__FINAL_NAME__]]></id>
+    <version><![CDATA[__VERSION__]]></version>
+    <author><![CDATA[__AUTHOR__]]></author>
+    <vqmver><![CDATA[__VQMOD_VERSION__]]></vqmver>
+    
+    <code>__RANDOM_HASH__</code>
+    <name>__FINAL_NAME__</name>
+    <link>__MY_LINK__</link>
+    
+    <file error="skip" name="">
+        <operation>
+            <search position="after"><![CDATA[]]></search>
+            <add><![CDATA[]]></add>
+        </operation>
+    </file>
+    
+</modification>
