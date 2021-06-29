@@ -1,5 +1,5 @@
 {
-  "name": "opexdk",
+  "name": "@prowebtec/opexdk",
   "version": "1.0.1",
   "description": "Opencart Extension Development Kit",
   "main": "lib/main.js",
@@ -66,11 +66,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:redochka/opexdk.git"
+    "url": "git@github.com:ProWebTec/opexdk.git"
   },
   "keywords": [
     "OpenCart"
   ],
-  "author": "reda.abdi@gmail.com",
-  "license": "EULA"
+  "author": "support@prowebtec.com",
+  "license": "GNU V3"
 }
