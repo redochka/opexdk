@@ -3,11 +3,13 @@
 trait __MODULE_UNDERSCORE___event_trait {
 
     private $my_events = array(
+/*
         array(
             "code" => "__MODULE_UNDERSCORE___event_handler_after_product_view",
             "when" => "admin/view/catalog/product_form/after",
             "func" => "extension/module/__MODULE_UNDERSCORE__/qty___MODULE_UNDERSCORE___event_handler_after_product_view",
         ),
+*/
     );
 
     private function add_all_events() {
@@ -19,7 +21,7 @@ trait __MODULE_UNDERSCORE___event_trait {
             $this->model_setting_event->addEvent(
                 $event['code'],
                 $event['when'],
-                $event['func']
+                $event['func'],
             );
         }
     }
@@ -29,9 +31,7 @@ trait __MODULE_UNDERSCORE___event_trait {
 
         $this->load->model('setting/event');
         foreach ($this->my_events as $event) {
-            $this->model_setting_event->deleteEventByCode(
-                $event['code']
-            );
+            $this->model_setting_event->deleteEventByCode($event['code']);
         }
     }
 }

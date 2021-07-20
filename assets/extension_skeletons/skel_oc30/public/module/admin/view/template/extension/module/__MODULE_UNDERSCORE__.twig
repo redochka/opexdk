@@ -73,6 +73,31 @@
               </div>
             </div>
 
+            {% if my_events is not empty %}
+            <hr>
+            This extension is managing these events:
+            <div style="overflow: auto;">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>When</th>
+                        <th>Func</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for event in my_events %}
+                        <tr>
+                            <td><code>{{ event.code }}</code></td>
+                            <td><code>{{ event.when }}</code></td>
+                            <td><code>{{ event.func }}</code></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+
           </form>
 
         </div><!-- .panel-body -->
@@ -88,6 +113,9 @@
       </div>
 
       <!-- include_social_login_fragment_b0c4d -->
+      <p>
+      Extension created using opexdk
+      </p>
 
     </div>
   </div>

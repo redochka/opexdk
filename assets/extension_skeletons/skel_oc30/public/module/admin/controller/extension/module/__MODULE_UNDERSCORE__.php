@@ -62,20 +62,8 @@ class ControllerExtensionModule__MODULE_CAPITAL_CAMEL__ extends Controller {
 			$this->response->redirect($this->url->link($modules_route, 'user_token=' . $this->session->data['user_token'] . '&type=module', 'SSL'));
 		}
 
-		$text_strings = array(
-			'heading_title',
-			'text_enabled',
-			'text_disabled',
-			'text_home',
-	        'text_yes',
-	        'text_no',
-			'button_save',
-			'button_cancel'
-		);
 
-		foreach ($text_strings as $text) {
-			$data[$text] = $this->language->get($text);
-		}
+        $data['my_events'] = $this->my_events;
 
  		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
