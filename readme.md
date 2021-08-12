@@ -6,7 +6,13 @@ OPEXDK helps you in all the steps required to create, develop and package your e
 
 ### Installation
 
-Clone the project and cd into, then install globally:
+Install globally
+
+```sh
+sudo npm install -g @prowebtec/opexdk@1.0.1
+```
+
+When developing, you can clone the project and cd into, make changes to the code, then install globally:
 
 ```sh
 sudo npm uninstall -g ; sudo npm install -g .
@@ -266,7 +272,7 @@ Use the suffix: `-coca`
 Example:
 
 ```sh
-reda@xps15:~/Work/WorkspaceOpencart/opex/codemaster-for-opencart/codemaster-coca$ tree
+reda@xps15:~/Work/WorkspaceOpencart/opex/my-extension-for-opencart/my-extension-coca$ tree
 .
 ├── manifest.json
 └── public
@@ -275,19 +281,19 @@ reda@xps15:~/Work/WorkspaceOpencart/opex/codemaster-for-opencart/codemaster-coca
             ├── language
             │   ├── de-de
             │   │   └── module
-            │   │       └── codemaster_pdf_common.php
+            │   │       └── my_extension_pdf_common.php
             │   └── english
             │       └── module
-            │           └── codemaster_pdf_common.php
+            │           └── my_extension_pdf_common.php
             └── model
                 ├── catalog
-                │   └── codemaster_customer_common.php
+                │   └── my_extension_customer_common.php
                 └── module
-                    ├── codemaster_dao_order_product_common.php
-                    ├── codemaster_dao_product_common.php
-                    ├── codemaster_dao_redeem_templates_common.php
-                    ├── codemaster_pdf_common.php
-                    └── codemaster_quantity_manager.php
+                    ├── my_extension_dao_order_product_common.php
+                    ├── my_extension_dao_product_common.php
+                    ├── my_extension_dao_redeem_templates_common.php
+                    ├── my_extension_pdf_common.php
+                    └── my_extension_quantity_manager.php
 
 11 directories, 9 files
 ```
