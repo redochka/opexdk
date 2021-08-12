@@ -9,7 +9,7 @@ OPEXDK helps you in all the steps required to create, develop and package your e
 Install globally
 
 ```sh
-sudo npm install -g @prowebtec/opexdk@1.0.1
+sudo npm install -g @prowebtec/opexdk
 ```
 
 When developing, you can clone the project and cd into, make changes to the code, then install globally:
