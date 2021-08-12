@@ -1,6 +1,6 @@
 {
   "name": "@prowebtec/opexdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Opencart Extension Development Kit",
   "main": "lib/main.js",
   "dependencies": {
