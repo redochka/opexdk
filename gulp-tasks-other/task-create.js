@@ -1,3 +1,4 @@
+const {argv: args} = require("yargs");
 module.exports = function (extension) {
 
     const gulp         = require('gulp');
@@ -77,12 +78,11 @@ module.exports = function (extension) {
             .pipe(replace("__RANDOM_HASH__", getRandomHash(), {skipBinary: true}))
             .pipe(replace("__MODULE__", args.moduleName, {skipBinary: true}))
             .pipe(rename(function (path) {
-                /*
-                 * I want to replace only in files. Because only files have an extension. Thus, excluding directories.
-                 */
-                if (path.extname) {
-                    path.basename = path.basename.replace("__MODULE_UNDERSCORE__", args.underscore);
-                }
+                // To replace only in files. Because only files have an extension. Thus, excluding directories.
+                //if (path.extname) {
+                //}
+                //rename files and directories like assets/extension_skeletons/skel_oc30/public/module/system/library/__MODULE_UNDERSCORE__/__MODULE_UNDERSCORE___event_trait.php
+                path.basename = path.basename.replace("__MODULE_UNDERSCORE__", args.underscore);
             }))
             .pipe(gulp.dest(pathToDest))
             ;
