@@ -35,10 +35,25 @@ module.exports = function (extension) {
         return pathToSrc;
     };
 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     /**
      ProWebTec 》 is added automatically to display name
      opexdk create --skel skel_oc23     --displayName "Admin long login" --finalName lolo-oc23      --shortName lolo-oc23      --capitalCamel Lolo         --underscore lolo
-     opexdk create --skel skel_crud_oc3 --displayName "TicketStatus"     --finalName ticket-status  --shortName ticket_status  --capitalCamel TicketStatus --underscore ticket_status
+
+     opexdk create --skel skel_crud_oc3 --displayName "TicketStatus"     --finalName ticket-status  --shortName ticket_status  --capitalCamel TicketStatus --underscore ticket_status --moduleName tsp
+
+     node bin/index-global.js -t create \
+     --skel skel_crud_oc3 \
+     --displayName "Expert Payment Rules"     \
+     --finalName xps-payment-rules  \
+     --shortName xps-payment-rules  \
+     --capitalCamel PaymentRules \
+     --moduleName xps \
+     --underscore payment_rules
+
      opexdk create --skel skel_oc30     --displayName "CACS admin"       --finalName cacs-admin-oc3 --shortName cacs-admin-oc3 --capitalCamel Cacs         --underscore cacs
      */
     gulp.task('create_from_skeleton', function () {
@@ -65,6 +80,7 @@ module.exports = function (extension) {
         debug("Going to use this skeleton: ", pathToSkel);
         debug("Extension will be yield into: ", pathToDest);
 
+        debug("module name: ", args.moduleName);
         /*
          * We are doing the same as battlecry and it's casex all in one function for transforming word casings
          * https://battlecry.js.org/casex-naming
@@ -76,13 +92,14 @@ module.exports = function (extension) {
             .pipe(replace("__MODULE_CAPITAL_CAMEL__", args.capitalCamel, {skipBinary: true}))
             .pipe(replace("__MODULE_UNDERSCORE__", args.underscore, {skipBinary: true}))
             .pipe(replace("__RANDOM_HASH__", getRandomHash(), {skipBinary: true}))
+            .pipe(replace("__MODULE_CAPITAL__", capitalizeFirstLetter(args.moduleName), {skipBinary: true}))
             .pipe(replace("__MODULE__", args.moduleName, {skipBinary: true}))
             .pipe(rename(function (path) {
                 // To replace only in files. Because only files have an extension. Thus, excluding directories.
                 //if (path.extname) {
                 //}
                 //rename files and directories like assets/extension_skeletons/skel_oc30/public/module/system/library/__MODULE_UNDERSCORE__/__MODULE_UNDERSCORE___event_trait.php
-                path.basename = path.basename.replace("__MODULE_UNDERSCORE__", args.underscore);
+                path.basename = path.basename.replace(/__MODULE_UNDERSCORE__/g, args.underscore);
             }))
             .pipe(gulp.dest(pathToDest))
             ;

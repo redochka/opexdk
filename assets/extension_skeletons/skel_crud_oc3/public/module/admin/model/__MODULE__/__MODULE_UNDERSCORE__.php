@@ -1,5 +1,5 @@
 <?php
-class Model__MODULE____MODULE_CAPITAL_CAMEL__ extends Model {
+class Model__MODULE_CAPITAL____MODULE_CAPITAL_CAMEL__ extends Model {
 	public function add__MODULE_CAPITAL_CAMEL__($data) {
 		foreach ($data['__MODULE_UNDERSCORE__'] as $language_id => $value) {
 			if (isset($__MODULE_UNDERSCORE___id)) {

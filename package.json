@@ -1,6 +1,6 @@
 {
   "name": "@prowebtec/opexdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Opencart Extension Development Kit",
   "main": "lib/main.js",
   "dependencies": {
@@ -26,11 +26,11 @@
     "gulp-if": "^3.0.0",
     "gulp-ignore": "^3.0.0",
     "gulp-insert": "^0.5.0",
+    "gulp-markdown": "^6.0.0",
     "gulp-notify": "^4.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.1.1",
     "gulp-zip": "^5.1.0",
-    "gulp-markdown": "^6.0.0",
     "minimatch": "^3.0.4",
     "moment": "^2.29.1",
     "node-notifier": "^9.0.1",

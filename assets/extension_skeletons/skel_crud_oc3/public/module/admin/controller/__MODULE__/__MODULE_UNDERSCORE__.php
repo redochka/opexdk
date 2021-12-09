@@ -1,5 +1,5 @@
 <?php
-class Controller__MODULE____MODULE_CAPITAL_CAMEL__ extends Controller {
+class Controller__MODULE_CAPITAL____MODULE_CAPITAL_CAMEL__ extends Controller {
 	private $error = array();
 
 	public function index() {

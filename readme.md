@@ -139,7 +139,7 @@ watch tasks (local, ftp or sftp) need to be restarted on file creation. This nee
 If you don’t want to install opexdk globally you can run it using this style:
 
 ```sh
-node lib/main.js -t package -m my-extension --ocmod --cloud
+node bin/index-global.js -t package -m my-extension --ocmod --cloud
 ```
 
 ### Integration with phpstorm
