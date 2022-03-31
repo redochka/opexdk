@@ -92,7 +92,7 @@ module.exports = function (extension) {
             .pipe(replace("__MODULE_CAPITAL_CAMEL__", args.capitalCamel, {skipBinary: true}))
             .pipe(replace("__MODULE_UNDERSCORE__", args.underscore, {skipBinary: true}))
             .pipe(replace("__RANDOM_HASH__", getRandomHash(), {skipBinary: true}))
-            .pipe(replace("__MODULE_CAPITAL__", capitalizeFirstLetter(args.moduleName), {skipBinary: true}))
+            .pipe(replace("__MODULE_CAPITAL__", capitalizeFirstLetter(args.moduleName || ""), {skipBinary: true}))
             .pipe(replace("__MODULE__", args.moduleName, {skipBinary: true}))
             .pipe(rename(function (path) {
                 // To replace only in files. Because only files have an extension. Thus, excluding directories.
