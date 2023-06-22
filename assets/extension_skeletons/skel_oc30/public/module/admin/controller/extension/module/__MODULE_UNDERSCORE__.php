@@ -59,7 +59,7 @@ class ControllerExtensionModule__MODULE_CAPITAL_CAMEL__ extends Controller {
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
-			$this->response->redirect($this->url->link($modules_route, 'user_token=' . $this->session->data['user_token'] . '&type=module', 'SSL'));
+			$this->response->redirect($this->url->link($modules_route, 'user_token=' . $this->session->data['user_token'] . '&type=module', true));
 		}
 
 
@@ -75,27 +75,27 @@ class ControllerExtensionModule__MODULE_CAPITAL_CAMEL__ extends Controller {
 		$data['breadcrumbs'] = array();
 
    		$data['breadcrumbs'][] = array(
-       		'href'      => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], 'SSL'),
+       		'href'      => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true),
        		'text'      => $this->language->get('text_home'),
       		'separator' => FALSE
    		);
 
    		$data['breadcrumbs'][] = array(
-	        'href'      => $this->url->link($modules_route, 'user_token=' . $this->session->data['user_token'] . '&type=module', 'SSL'),
+	        'href'      => $this->url->link($modules_route, 'user_token=' . $this->session->data['user_token'] . '&type=module', true),
 	        'text'      => $this->language->get('text_module'),
 	        'separator' => ' :: '
    		);
 
    		$data['breadcrumbs'][] = array(
-	        'href'      => $this->url->link($module_route, 'user_token=' . $this->session->data['user_token'] . '&type=module', 'SSL'),
+	        'href'      => $this->url->link($module_route, 'user_token=' . $this->session->data['user_token'] . '&type=module', true),
 	        'text'      => $this->language->get('heading_title'),
 	        'separator' => ' :: '
    		);
 
 
-   		$data['action'] = $this->url->link($module_route, 'user_token=' . $this->session->data['user_token'] . '&type=module', 'SSL');
+   		$data['action'] = $this->url->link($module_route, 'user_token=' . $this->session->data['user_token'] . '&type=module', true);
 
-   		$data['cancel'] = $this->url->link($modules_route, 'user_token=' . $this->session->data['user_token'] . '&type=module', 'SSL');
+   		$data['cancel'] = $this->url->link($modules_route, 'user_token=' . $this->session->data['user_token'] . '&type=module', true);
 
 
 		$config_data = array(
