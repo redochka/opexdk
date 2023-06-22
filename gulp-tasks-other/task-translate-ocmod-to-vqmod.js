@@ -4,6 +4,7 @@ debug("task-vqmod-to-vqmod: loading");
 /*
  * This task is not meant for the usual process
  * it's to be run independently.
+ * opexdk translate-to-vqmod --path /path/to/vqmod/folder
  */
 
 module.exports = function () {

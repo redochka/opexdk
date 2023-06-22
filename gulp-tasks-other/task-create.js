@@ -55,6 +55,7 @@ module.exports = function (extension) {
      --underscore payment_rules
 
      opexdk create --skel skel_oc30     --displayName "CACS admin"       --finalName cacs-admin-oc3 --shortName cacs-admin-oc3 --capitalCamel Cacs         --underscore cacs
+     opexdk create --skel skel_oc30     --displayName "Customily"       --finalName customily-oc3 --shortName customily-oc3 --capitalCamel Customily         --underscore customily
      */
     gulp.task('create_from_skeleton', function () {
 

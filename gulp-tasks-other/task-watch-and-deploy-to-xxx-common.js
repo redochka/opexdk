@@ -70,7 +70,9 @@ let watchDir = function (dir, remoteDir, uploadFile, defaultOru) {
 
                         axios.get(ocmodRefreshUrl).then(function (response) {
                             // handle success
-                            console.log(response.data);
+                            if(! args["oru-silent"]){
+                                console.log(response.data);
+                            }
                         })
                             .catch(function (error) {
                                 // handle error

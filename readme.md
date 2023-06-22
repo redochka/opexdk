@@ -90,6 +90,7 @@ opexdk watch -m my-extension -o www
 # Use the `--vq2oc2sys`     flag to convert vqmod files to ocmod and push them to the `system` folder
 # Use the `--exclude-vqmod` flag to skip/ignore/exclude vqmod files.
 # Use the `--oru="URL"`     flag to call the URL that refreshes OCMOD after ocmod file modification (used in conjunction with `vq2oc2sys`). ORU stands for Ocmod Refresh Url.
+# Use the `--oru-silent`    flag to avoid displaying ocmod refresh output to console.
 ```
 
 - Watch changes in `my-extension` folder and push to FTP server:

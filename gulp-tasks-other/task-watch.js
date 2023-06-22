@@ -1,4 +1,3 @@
-const {mapToNotifu} = require("node-notifier/lib/utils");
 module.exports      = function (extension) {
 
     const gulp       = require('gulp');
@@ -89,7 +88,5 @@ module.exports      = function (extension) {
             }
 
         });
-
     });
-
 }

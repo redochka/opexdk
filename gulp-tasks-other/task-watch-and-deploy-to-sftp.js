@@ -1,3 +1,6 @@
+const {argv: args} = require("yargs");
+const log = require("fancy-log");
+const prompt = require("prompt");
 module.exports = function (extension) {
 
     const gulp            = require('gulp');
@@ -6,7 +9,7 @@ module.exports = function (extension) {
     const cu              = require("../gulp-includes/common-utils.js");
     const log             = require('fancy-log');
     const watchDir        = require('./task-watch-and-deploy-to-xxx-common');
-    let deployToFtpModule = require("./sftp/deploy-single-file")(extension);
+    let sftpDeployer = require("./sftp/deploy-single-file")(extension);
 
     let defaultOru = "";
     if(extension.devSpec && extension.devSpec.watchTask && extension.devSpec.watchTask.ocmodRefreshUrl){
@@ -23,7 +26,7 @@ module.exports = function (extension) {
         let dirs = cu.getExtensionAndDepsDirs(extension);
 
         dirs.forEach(function (dir) {
-            watchDir(dir, serverConfig.remoteDir, deployToFtpModule.uploadFile, defaultOru);
+            watchDir(dir, serverConfig.remoteDir, sftpDeployer.uploadFile, defaultOru);
         });
 
     };
@@ -37,8 +40,8 @@ module.exports = function (extension) {
         /*
          * Get our destination
          */
-        serverConfig = deployToFtpModule.connectToSftp();
-
+        serverConfig = sftpDeployer.connectToSftp(()=>{
+        });
 
         if (args.yes) {
             log("★ yes args passed");
@@ -61,6 +64,7 @@ module.exports = function (extension) {
                 }
             });
         }
+
 
     });
 

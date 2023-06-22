@@ -1,5 +1,5 @@
 /**
- * We use vinyl-ftp where as somewhere else in task-watch-and-deploy-to-ftp.js we use an other ftp module.
+ * We use vinyl-ftp whereas somewhere else in task-watch-and-deploy-to-ftp.js we use another ftp module.
  * Vinyl-ftp seems better.
  */
 module.exports = function (extension) {
@@ -8,30 +8,9 @@ module.exports = function (extension) {
     const args = require('yargs').argv;
     const cu   = require("../gulp-includes/common-utils.js");
     const ftp  = require('vinyl-ftp');    //formerly known as gulp-ftp
-    const path = require('path');
     const log  = require('fancy-log');
 
     const walk = require('walk');    //we used walk instead of findit because of sync. Sync causes stack error.. node --stack-size=32000 node_modules/gulp/bin/gulp.js
-
-
-    const ftpNotifier = {
-        'on'   : function (x) {
-            //console.log("inside on");
-        },
-        'once' : function (x) {
-            //console.log("inside once");
-        },
-        'emit' : function (x) {
-            //console.log("inside emit");
-        },
-        'write': function (x) {
-            //console.log("inside write");
-        },
-        'end'  : function (x) {
-
-            require("../lib/utils/opexdk-notifier").notify("Files were removed from ftp")
-        },
-    };
 
 
     /**
@@ -44,8 +23,6 @@ module.exports = function (extension) {
 
         const srcArray = [`${MY_VQMOD_LEGACY_DIST_FOLDER}/upload/**/*`];
         log("✔ FTP delete of: %s from: %s", srcArray, ftpConf.host);
-
-        return;
 
         let srcFiles = `${MY_VQMOD_LEGACY_DIST_FOLDER}/upload`;
 
@@ -91,7 +68,7 @@ module.exports = function (extension) {
                         console.log("★ Removing remote file: " + remoteFileToRemove);
 
                         conn.delete(remoteFileToRemove, function (err) {
-                            if (err) throw err;
+                            if (err) console.log("error deleting file. err is:", err.message);
                         });
                     }
                 }

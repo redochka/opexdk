@@ -80,12 +80,15 @@ module.exports = function(extension){
     };
 
 
-    let uploadFile = function (sourcePath, remotePath) {
+    let uploadFile = function (sourcePath, remotePath, cb) {
 
         log.info("★ Uploading %s to %s", sourcePath, remotePath);
 
         c.put(sourcePath, remotePath, function(err) {
             if (err) throw err;
+            if (cb) {
+                cb();
+            }
             //c.end();
         });
     };
