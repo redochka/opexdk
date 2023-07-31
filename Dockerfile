@@ -1,5 +1,4 @@
-#FROM node:13-alpine
-FROM node:15.10.0-buster
+FROM node:20
 
 WORKDIR /app
 
@@ -12,6 +11,4 @@ RUN npm set progress=false
 
 RUN npm install
 
-RUN npm install -g gulp
-
-ENTRYPOINT ["docker-entrypoint.sh"]
+RUN npm uninstall -g ; npm install -g .

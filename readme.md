@@ -300,3 +300,23 @@ reda@xps15:~/Work/WorkspaceOpencart/opex/my-extension-for-opencart/my-extension-
 ```
 
 When changes are detected or when packaging, files in `public/module/common` will be copied to both `admin` and `catalog`
+
+### Docker
+
+- Build the image
+
+```sh
+docker image build . -t opexdk
+```
+
+- Up the container (with env and volumes)
+
+```sh
+docker-compose up -d
+```
+
+- Connect to it to run commands
+
+```sh
+docker exec -it opexdk-opexdk-1 /bin/bash
+```

@@ -1,0 +1,15 @@
+version: '3'
+services:
+  opexdk:
+    image: opexdk
+    environment:
+      - OPEXDK_SRC_PATH=/app/opex
+      - OPEXDK_VHOST_PATH=/app/opencart
+      - OPEXDK_SERVERS_INVENTORY=/app/ftp-servers
+
+    volumes:
+      - /Users/reda/PhpstormProjects/opex:/app/opex
+      - /Users/reda/docker/data/www/opencart:/app/opencart
+      - /Users/reda/PhpstormProjects/opex/depo/ftp-servers:/app/ftp-servers
+
+    tty: true
