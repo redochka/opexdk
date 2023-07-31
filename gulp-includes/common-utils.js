@@ -42,7 +42,7 @@ module.exports = {
      */
     getOutputDirAbsPath: function () {
         if (process.env.OPEXDK_OUTPUT_DIR) {
-            return process.env.OPEX_OUTPUT_DIR;
+            return process.env.OPEXDK_OUTPUT_DIR;
         } else {
             const os = require('os');
             return path.join(os.tmpdir(), "opexdk-output");
