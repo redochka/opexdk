@@ -7,7 +7,7 @@ module.exports = function (extension) {
     const cu   = require("../gulp-includes/common-utils.js");
     const log  = require('fancy-log');
     const path = require('path');
-    const sftp = require('../lib/utils/sftp-uploader');
+    const sftp = require('../lib/utils/scp-speaker');
     const args = require('yargs').argv;
 
     let serverConfig;

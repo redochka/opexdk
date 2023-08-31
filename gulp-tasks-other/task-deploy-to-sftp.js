@@ -2,7 +2,7 @@ module.exports = function (extension) {
 
     const gulp  = require('gulp');
     const cu    = require("../gulp-includes/common-utils.js");
-    const sftp  = require('../lib/utils/sftp-uploader');
+    const sftp  = require('../lib/utils/scp-speaker');
     const args  = require('yargs').argv;
 
     /**
