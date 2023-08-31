@@ -12,7 +12,7 @@ module.exports = function (extension) {
   const {argv: args} = require("yargs");
   const fs           = require("fs");
   const walk         = require("walk");
-  let sftpSpeaker    = require("./sftp/deploy-single-file")(extension);
+  let sftpSpeaker    = require("../lib/utils/sftp-speaker")(extension);
 
 
   let serverConfig;
