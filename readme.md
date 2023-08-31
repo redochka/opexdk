@@ -312,11 +312,11 @@ docker image build . -t opexdk
 - Up the container (with env and volumes)
 
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
 
 - Connect to it to run commands
 
 ```sh
-docker exec -it opexdk-opexdk-1 /bin/bash
+docker exec -it opexdk /bin/bash
 ```
