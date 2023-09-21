@@ -6,7 +6,7 @@
   "dependencies": {
     "@icetee/ftp": "^1.0.8",
     "async": "^3.2.4",
-    "axios": "^1.4.0",
+    "axios": "^1.5.0",
     "bluebird": "^3.7.2",
     "child_process": "^1.0.2",
     "colors": "^1.4.0",
@@ -31,7 +31,7 @@
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.1.4",
     "gulp-zip": "^5.1.0",
-    "minimatch": "^5.1.0",
+    "minimatch": "^9.0.3",
     "moment": "^2.29.4",
     "node-notifier": "^10.0.1",
     "node-scp": "^0.0.23",
@@ -44,7 +44,7 @@
     "ssh2": "^1.14.0",
     "ssh2-sftp-client": "^9.1.0",
     "through2": "^4.0.2",
-    "vinyl": "^2.2.1",
+    "vinyl": "^3.0.0",
     "vinyl-ftp": "^0.6.1",
     "walk": "^2.3.15",
     "walkdir": "^0.4.1",
@@ -53,7 +53,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "glob": "^8.0.3",
+    "glob": "^10.3.4",
     "gulp-clean": "^0.4.0",
     "gulp-shell": "^0.8.0",
     "mocha": "^10.2.0",

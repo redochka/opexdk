@@ -72,6 +72,8 @@ function loadTasks(slug=null) {
         require('./gulp-tasks-other/task-translate-ocmod-to-vqmod.js')();
         require('./gulp-tasks-other/task-translate-vqmod-to-ocmod.js')();
     }
+
+    require('./gulp-tasks-other/task-zzz-test.js')();
 }
 
 //node bin/index-global.js test -m toto --oru "http://opencart.me/demo_offerz/index.php?route=extension/module/ocmod_refresh&secret=2105"
