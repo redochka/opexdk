@@ -135,12 +135,22 @@ opexdk package -m my-extension --ocmod
 
 watch tasks (local, ftp or sftp) need to be restarted on file creation. This needs to be fixed.   
 
-### Run tasks using node command:
+### Run tasks using node command (deprecated):
 
 If you don’t want to install opexdk globally you can run it using this style:
 
 ```sh
 node bin/index-global.js -t package -m my-extension --ocmod --cloud
+```
+
+### Run tasks using node command:
+
+If you don’t want to install opexdk globally you can run it using this style:
+
+```sh
+npx ts-node bin/index-global.js -t package -m my-extension --ocmod --cloud
+# or
+npx ts-node bin/index-global.js test2
 ```
 
 ### Integration with phpstorm
@@ -156,7 +166,7 @@ Phpstorm supports running gulp tasks. You can create gulp task to run opexdk tas
 Either run from a terminal. Make sure gulp is installed globally. 
 
 ```sh
-# cd opexdk where there is the gulpfile.js
+# cd opexdk where there is the gulpfile.ts
 # gulp deploy-compiled-sftp -m my-extension --server server.sftp.xml
 node bin/index-global.js translate-to-vqmod --path /path/to/files 
 ```
@@ -165,7 +175,7 @@ node bin/index-global.js translate-to-vqmod --path /path/to/files
 
 Create a Gulp run configuration in Phpstorm, name it for example `watch my extension` 
 
-- Gulpfile: Specify the `gulpfile.js` found in the opexdk repository
+- Gulpfile: Specify the `gulpfile.ts` found in the opexdk repository
 - Task: `watch`
 - Arguments: `-m my-extension -o www`
 - Gulp package: `opexdk/node_modules/gulp`

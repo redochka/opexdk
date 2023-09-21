@@ -1,7 +1,7 @@
-const notifier = require('node-notifier');
-const path = require('path');
+import notifier from "node-notifier";
+import * as path from "path";
 
-module.exports.notify = function (message) {
+export const notify = function (message: any) {
   notifier.notify({
     title  : 'OPEXDK',
     message: message,
@@ -10,5 +10,5 @@ module.exports.notify = function (message) {
     //on MacOS, the terminal icon shows, because the script is run in the terminal
     //https://github.com/mikaelbr/node-notifier/issues/71
   });
-
 }
+module.exports.notify = notify;
