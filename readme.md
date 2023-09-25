@@ -330,3 +330,22 @@ docker compose up -d
 ```sh
 docker exec -it opexdk /bin/bash
 ```
+
+### Troubleshooting
+
+Task failing with the following message:
+
+```sh
+# /Users/reda/WebstormProjects/opexdk/node_modules/glob-watcher/node_modules/chokidar/lib/fsevents-handler.js:28
+#   return (new fsevents(path)).on('fsevent', callback).start();
+#           ^
+# TypeError: fsevents is not a constructor
+```
+
+```sh
+brew install make
+yarn global add node-gyp
+# yarn remove fsevents
+# yarn add fsevents
+# yarn remove fsevents
+```

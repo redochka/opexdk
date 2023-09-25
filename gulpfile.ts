@@ -3,14 +3,6 @@ let args = require('yargs').argv;
 const randomstring = require('randomstring');
 require('colors');  //provides: yellow, etc...
 
-
-//Avoid intellij warning
-//Program args:
-/** @namespace args.ocmod */
-
-/** @namespace args.vv */
-/** @namespace args.cloud */
-
 function loadTasks(slug = null) {
   if (slug) {
     args.m = slug;

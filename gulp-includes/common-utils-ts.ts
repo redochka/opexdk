@@ -1,6 +1,6 @@
 import path from "path";
 import log from "fancy-log";
-import {ExtensionManifestPackaging, ExtensionManifest} from "../lib/utils/types/opexdk.types";
+import {ExtensionManifest, ExtensionManifestPackaging} from "../lib/utils/types/opexdk.types";
 
 export const cu = {
 
@@ -18,7 +18,7 @@ export const cu = {
     return s;
   },
 
-  getPublicNameOfDelivery: function (extension: ExtensionManifestPackaging) {
+  getPublicNameOfDelivery: function (extension: ExtensionManifestPackaging, args: any) {
 
     /*
      *
@@ -143,7 +143,7 @@ export const cu = {
   },
 
 
-  getPathToVhost: function (manifest: ExtensionManifest) {
+  getPathToVhost: function (manifest: ExtensionManifest, args: any) {
     let ocFolder: string;
     if (args.o) {
       ocFolder = args.o;

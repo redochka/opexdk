@@ -55,14 +55,14 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@types/debug": "^4.1.8",
+    "@types/debug": "^4.1.9",
     "@types/fancy-log": "^2.0.0",
     "@types/gulp": "^4.0.14",
     "@types/gulp-rename": "^2.0.3",
-    "@types/node-notifier": "^8.0.2",
+    "@types/node-notifier": "^8.0.3",
     "@types/randomstring": "^1.1.8",
-    "@types/yargs": "^17.0.24",
-    "glob": "^10.3.4",
+    "@types/yargs": "^17.0.25",
+    "glob": "^10.3.7",
     "gulp-clean": "^0.4.0",
     "gulp-shell": "^0.8.0",
     "mocha": "^10.2.0",
