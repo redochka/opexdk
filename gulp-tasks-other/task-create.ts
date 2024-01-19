@@ -52,12 +52,12 @@ module.exports = function (_extension: any) {
 
   /**
    ProWebTec 》 is added automatically to display name
-   opexdk create --skel skel_oc23     --displayName "Admin long login" --finalName lolo-oc23      --shortName lolo-oc23      --capitalCamel Lolo         --underscore lolo
+   opexdk create --skeleton skel_oc23     --displayName "Admin long login" --finalName lolo-oc23      --shortName lolo-oc23      --capitalCamel Lolo         --underscore lolo
 
-   opexdk create --skel skel_crud_oc3 --displayName "TicketStatus"     --finalName ticket-status  --shortName ticket_status  --capitalCamel TicketStatus --underscore ticket_status --moduleName tsp
+   opexdk create --skeleton skel_crud_oc3 --displayName "TicketStatus"     --finalName ticket-status  --shortName ticket_status  --capitalCamel TicketStatus --underscore ticket_status --moduleName tsp
 
    node bin/index-global.js -t create \
-   --skel skel_crud_oc3 \
+   --skeleton skel_crud_oc3 \
    --displayName "Expert Payment Rules"     \
    --finalName xps-payment-rules  \
    --shortName xps-payment-rules  \
@@ -65,8 +65,13 @@ module.exports = function (_extension: any) {
    --moduleName xps \
    --underscore payment_rules
 
-   opexdk create --skel skel_oc30     --displayName "CACS admin"       --finalName cacs-admin-oc3 --shortName cacs-admin-oc3 --capitalCamel Cacs         --underscore cacs
-   opexdk create --skel skel_oc30     --displayName "Customily"       --finalName customily-oc3 --shortName customily-oc3 --capitalCamel Customily         --underscore customily
+   opexdk create --skeleton skel_oc30 --displayName "CACS admin"      --finalName cacs-admin-oc3 --shortName cacs-admin-oc3 --capitalCamel Cacs         --underscore cacs
+   opexdk create --skeleton skel_oc30 \
+   --displayName "Customily"       \
+   --finalName customily-oc3  \
+   --shortName customily-oc3  \
+   --capitalCamel Customily    \
+   --underscore customily
    */
   gulp.task('create_from_skeleton', function () {
 

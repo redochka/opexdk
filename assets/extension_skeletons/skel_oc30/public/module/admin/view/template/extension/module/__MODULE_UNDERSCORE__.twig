@@ -96,6 +96,10 @@
                     </tbody>
                 </table>
             </div>
+            <div class="text-right">
+              <a href="{{ add_all_events_url }}" class="btn btn-primary" data-tv-role="add-all-events">Add all events</a>
+              <a href="{{ del_all_events_url }}" class="btn btn-danger" data-tv-role="del-all-events">Delete all events</a>
+            </div>
             {% endif %}
 
           </form>
@@ -120,8 +124,30 @@
     </div>
   </div>
 
-
 </div><!-- #content -->
+
+<script>
+  $("body").on('click', '[data-tv-role=add-all-events],[data-tv-role=del-all-events]', function (e){
+
+    e.preventDefault();
+
+    let $this = $(this);
+    $.ajax({
+      url     : $this.attr('href'),
+      method  : "post",
+      success : function () {
+        console.log("ajax success");
+        window.location.reload();
+      },
+      error   : function (xhr, e1, e2) {
+        console.error("✘", e1, e2);
+        alert(e1);
+      },
+      complete: function () {
+      }
+    });
+  });
+</script>
 
 {{ footer }}
 

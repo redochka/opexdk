@@ -55,7 +55,10 @@ function loadTasks(slug = null) {
     require('./gulp-tasks-other/task-remove-from-ftp')(extensionManifest);
     require('./gulp-tasks-other/task-deploy-to-sftp.js')(extensionManifest);
     require('./gulp-tasks-other/task-watch-and-deploy-to-ftp')(extensionManifest);
-    require('./gulp-tasks-other/task-watch-and-deploy-to-sftp')(extensionManifest);
+
+    if (task==='watch-sftp') {
+      require('./gulp-tasks-other/task-watch-and-deploy-to-sftp')(extensionManifest);
+    }
     require('./gulp-tasks-other/task-get-files-from-ftp')(extensionManifest);
 
   } else {
