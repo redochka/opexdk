@@ -1,7 +1,10 @@
-let gulp = require('gulp');
-let args = require('yargs').argv;
-const randomstring = require('randomstring');
-require('colors');  //provides: yellow, etc...
+import randomstring from "randomstring";
+import 'colorts/lib/string'
+import {gulpArgs} from "./lib/utils/args-utils";
+import gulp from "gulp";
+
+// let args = require('yargs').argv;
+const args = gulpArgs();
 
 function loadTasks(slug = null) {
   if (slug) {
@@ -24,6 +27,10 @@ function loadTasks(slug = null) {
       extensionManifest.private_dist_dir = `dist_${random}`;
     }
 
+    if (task==="create" || task==="create-simple") {
+      console.log(`Extension exists, task ${task} will be reject. Aborting!`.red);
+      process.exit();
+    }
     require('./gulp-tasks-build/1700-task-clean.js')(extensionManifest);
     require('./gulp-tasks-build/1700-task-create-build-workspace.js')(extensionManifest);
     require('./gulp-tasks-build/2000-task-vqmod.js')(extensionManifest);
@@ -68,7 +75,7 @@ function loadTasks(slug = null) {
     if (task==="create") {
       require('./gulp-tasks-other/task-create')();
     }
-    require('./gulp-tasks-other/task-create-simple.js')();
+    require('./gulp-tasks-other/task-create-simple')();
     require('./gulp-tasks-other/task-translate-ocmod-to-vqmod.js')();
     require('./gulp-tasks-other/task-translate-vqmod-to-ocmod.js')();
   }

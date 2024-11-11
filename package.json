@@ -61,6 +61,7 @@
   "devDependencies": {
     "@types/debug": "^4.1.12",
     "@types/fancy-log": "^2.0.2",
+    "@types/fs-extra": "^11.0.4",
     "@types/gulp": "^4.0.17",
     "@types/gulp-rename": "^2.0.6",
     "@types/node-notifier": "^8.0.5",
