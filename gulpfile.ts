@@ -28,7 +28,7 @@ function loadTasks(slug = null) {
     require('./gulp-tasks-build/1700-task-create-build-workspace.js')(extensionManifest);
     require('./gulp-tasks-build/2000-task-vqmod.js')(extensionManifest);
     require('./gulp-tasks-build/2300-task-rename-admin.js')(extensionManifest);
-    require('./gulp-tasks-build/2600-task-markdown.js')(extensionManifest);
+    require('./gulp-tasks-build/2600-task-markdown')(extensionManifest);
     require('./gulp-tasks-build/2900-task-rename-module-to-upload.js')(extensionManifest);
     require('./gulp-tasks-build/3200-task-translate-to-ocmod.js')(extensionManifest);
     require('./gulp-tasks-build/3500-task-merge-ocmod-install')(extensionManifest);
@@ -36,14 +36,14 @@ function loadTasks(slug = null) {
     require('./gulp-tasks-build/4100-task-preserve-upload-folder.js')(extensionManifest);
     require('./gulp-tasks-build/4400-task-package-ocmod.js')(extensionManifest);
     require('./gulp-tasks-build/4500-task-rename-package-for-cloud')(extensionManifest);
-    require('./gulp-tasks-build/4700-translate-markdown-to-html-from-dist.js')(extensionManifest);
+    require('./gulp-tasks-build/4700-translate-markdown-to-html-from-dist')(extensionManifest);
     require('./gulp-tasks-build/task-package-legacy.js')(extensionManifest);
     require('./gulp-tasks-build/5000-remove-ocmod-ids-from-vqmod.js')(extensionManifest);
     require('./gulp-tasks-build/5100-task-vq2oc2sys.js')(extensionManifest);
     require('./gulp-tasks-build/5150-task-vq2oc2sys-after')(extensionManifest);
     require('./gulp-tasks-build/5200-task-copy-doc-folder')(extensionManifest);
     //require('./gulp-tasks-build/5250-task-markdown-to-html-in-doc-folder')(extensionManifest);
-    require('./gulp-tasks-build/5300-task-package.js')(extensionManifest);
+    require('./gulp-tasks-build/5300-task-package')(extensionManifest);
     require('./gulp-tasks-build/5600-task-release.js')(extensionManifest);
 
     require('./gulp-tasks-other/task-deploy')(extensionManifest);

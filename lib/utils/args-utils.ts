@@ -21,3 +21,9 @@ export const createArgs = () => {
     moduleName: {type: 'string', demandOption: false},
   }).parseSync()
 };
+
+export const deployCompiledSftpArgs = () => {
+  return yargs(hideBin(process.argv)).options({
+    server: {type: 'string', demandOption: true}
+  }).parseSync()
+};

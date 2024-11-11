@@ -1,10 +1,12 @@
-const log = require('fancy-log');
-const {Client} = require('node-scp')
+import {Client} from "node-scp";
+import log from "fancy-log";
+import 'colorts/lib/string';
+import {ServerConfig} from "./types/opexdk.types";
 
 /**
  *
  */
-const uploadFile = function (sourcePath, remotePath, serverConfig, done) {
+export const uploadFile = function (sourcePath: string, remotePath: string, serverConfig: ServerConfig, done: () => void) {
 
   Client({
     host    : serverConfig.host,
@@ -19,10 +21,10 @@ const uploadFile = function (sourcePath, remotePath, serverConfig, done) {
       remotePath,
       // options?: TransferOptions
     )
-      .then(response => {
+      .then(_response => {
         client.close() // remember to close connection after you finish
 
-        log("✔ SFTP completed. No error.");
+        log("✔ SFTP completed. No error.".green);
         require("./opexdk-notifier").notify('Compiled extension was uploaded successfully.');
         if (done) done();
 
@@ -32,5 +34,3 @@ const uploadFile = function (sourcePath, remotePath, serverConfig, done) {
       })
   }).catch(e => console.log(e))
 }
-
-exports.uploadFile = uploadFile;

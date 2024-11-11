@@ -1,14 +1,14 @@
+import gulp from "gulp";
+import insert from "gulp-insert";
+import markdown from "gulp-markdown";    //it uses marked. See https://github.com/chjj/marked/issues/119 for adding CSS.
+import rename from "gulp-rename";
+import {cu} from "../gulp-includes/common-utils-ts";
+import fs from "fs";
+import path from "path";
+import {argv as args} from "yargs";
+
+
 module.exports = function (extension) {
-
-    const gulp     = require('gulp');
-    const insert   = require('gulp-insert');
-    const markdown = require('gulp-markdown');    //it uses marked. See https://github.com/chjj/marked/issues/119 for adding CSS.
-    const rename   = require("gulp-rename");
-    const cu       = require("../gulp-includes/common-utils.js");
-    const fs       = require('fs');
-    const path     = require('path');
-
-
     gulp.task('translate-markdown-to-html-from-dist', gulp.series('rename-package-for-cloud', function (done) {
 
         /*
@@ -28,7 +28,7 @@ module.exports = function (extension) {
         /*
          *
          */
-        const FINAL_FILENAME  = cu.getPublicNameOfDelivery(extension);
+        const FINAL_FILENAME  = cu.getPublicNameOfDelivery(extension, args);
         const MY_DIST_DIR     = cu.getPathToExtensionDistFolder(FINAL_FILENAME, extension);
 
 

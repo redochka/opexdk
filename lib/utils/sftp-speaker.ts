@@ -1,14 +1,16 @@
-module.exports = function () {
+import log from "fancy-log";
+import {deployCompiledSftpArgs} from "./args-utils";
+import {ServerConfig} from "./types/opexdk.types";
+import 'colorts/lib/string';
 
-  const args = require('yargs').argv;
-  const log  = require('fancy-log');
-
-
+export const SftpSpeaker = function () {
   let sftp;
-  let serverConfig;
+  let serverConfig: ServerConfig;
 
 
   let connectToSftp = function (callback) {
+
+    const args = deployCompiledSftpArgs();
 
     if (!args.server) {
       console.error("Missing `server` argument. Aborting!");
@@ -21,22 +23,22 @@ module.exports = function () {
      * load server connexion config
      */
     let serverConfigLoader = require('../../my-helpers/load-server-config-from-filezilla-format');
-    serverConfig           = serverConfigLoader.getFtpConfigUsingPixlXml(serverConfigFile);
+    serverConfig = serverConfigLoader.getFtpConfigUsingPixlXml(serverConfigFile);
     console.log("serverConfig:\n", serverConfig);
 
     /*
      *
      */
     let Client = require('ssh2-sftp-client');  //https://www.npmjs.com/package/ssh2-sftp-client
-    sftp       = new Client();
+    sftp = new Client();
     sftp.connect({
-      host    : serverConfig.host,
-      port    : serverConfig.port,
-      username: serverConfig.user,
-      password: serverConfig.pass,
+      host             : serverConfig.host,
+      port             : serverConfig.port,
+      username         : serverConfig.user,
+      password         : serverConfig.pass,
       keepaliveInterval: 10000,
     }).then(() => {
-      log("SFTP connected");
+      log("SFTP connected".green);
       if (callback) callback();
       // return sftp.list('/home/reda/tmp/testnodesftp');
 

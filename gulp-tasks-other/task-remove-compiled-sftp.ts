@@ -1,25 +1,27 @@
-const debug = require("debug")("remove-compiled-sftp");
-debug("Loading task definition".grey);
-
-module.exports = function (extension) {
-
-  const gulp         = require('gulp');
-  const cu           = require("../gulp-includes/common-utils.js");
-  const log          = require('fancy-log');
-  const path         = require('path');
-  const sshUtils     = require('../lib/utils/ssh-utils');
-  // const args      = require('yargs').argv;
-  const {argv: args} = require("yargs");
-  const fs           = require("fs");
-  const walk         = require("walk");
-  let sftpSpeaker    = require("../lib/utils/sftp-speaker")(extension);
+import gulp from "gulp";
+import {cu} from "../gulp-includes/common-utils-ts";
+import log from "fancy-log";
+import path from "path";
+import fs from "fs";
+import walk from "walk";
+import {SftpSpeaker} from "../lib/utils/sftp-speaker";
+import {deployCompiledSftpArgs} from "../lib/utils/args-utils";
+import {ExtensionManifestPackaging, ServerConfig} from "../lib/utils/types/opexdk.types";
 
 
-  let serverConfig;
+module.exports = function (extension: ExtensionManifestPackaging) {
 
-  const loopOverExtensionFilesAndDeleteThemFromSftpServer = function (serverConfig, sftpSpeaker) {
+  let serverConfig: ServerConfig;
 
-    const FINAL_FILENAME              = cu.getPublicNameOfDelivery(extension);
+  const loopOverExtensionFilesAndDeleteThemFromSftpServer = function (serverConfig: ServerConfig, sftpSpeaker: {
+    connectToSftp?: (callback: any) => ServerConfig;
+    uploadFile?: (sourcePath: any, remotePath: any, cb?: any) => void;
+    closeConnection?: () => void;
+    deleteFile: any;
+  }) {
+
+    const args = deployCompiledSftpArgs();
+    const FINAL_FILENAME = cu.getPublicNameOfDelivery(extension, args);
     const MY_VQMOD_LEGACY_DIST_FOLDER = cu.getPathToExtensionLegacyDistFolder(FINAL_FILENAME, extension);
 
     const srcArray = [`${MY_VQMOD_LEGACY_DIST_FOLDER}/upload/**/*`];
@@ -76,6 +78,8 @@ module.exports = function (extension) {
    */
   let connectToSftpAndRemoveFiles = function (done) {
 
+    const args = deployCompiledSftpArgs();
+
     if (!args.server) {
       console.error("Missing `server` argument. Aborting!");
       process.exit();
@@ -84,11 +88,14 @@ module.exports = function (extension) {
     /*
      *
      */
+
+    const sftpSpeaker = SftpSpeaker();
+
     serverConfig = sftpSpeaker.connectToSftp(function () {
 
-      const FINAL_FILENAME              = cu.getPublicNameOfDelivery(extension);
+      const FINAL_FILENAME = cu.getPublicNameOfDelivery(extension, args);
       const MY_VQMOD_LEGACY_DIST_FOLDER = cu.getPathToExtensionLegacyDistFolder(FINAL_FILENAME, extension);
-      const srcPath                     = path.join(MY_VQMOD_LEGACY_DIST_FOLDER, 'upload');
+      const srcPath = path.join(MY_VQMOD_LEGACY_DIST_FOLDER, 'upload');
 
       //TODO
       //novqmod : work in progress
@@ -96,7 +103,7 @@ module.exports = function (extension) {
         log("✔ VQMOD files won't be deleted. Extension was not deployed. Work in progress");
 
         let files = fs.readdirSync(srcPath);
-        debug(files);
+        // debug(files);
         return;
 
       } else {
@@ -119,5 +126,3 @@ module.exports = function (extension) {
 
   return gulp.task('remove-compiled-sftp', gulp.series('package', connectToSftpAndRemoveFiles));
 };
-
-debug("Loaded".grey);

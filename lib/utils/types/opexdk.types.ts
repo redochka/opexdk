@@ -1,4 +1,4 @@
-export interface ExtensionManifestPackaging extends ExtensionManifest{
+export interface ExtensionManifestPackaging extends ExtensionManifest {
   dir: any;
 }
 
@@ -11,4 +11,12 @@ export interface ExtensionManifest {
   dependencies: string[];
   finalName: string;
   version: string;
+}
+
+export interface ServerConfig {
+  pass: string;
+  user: string;
+  port: string;
+  host: string;
+  remoteDir: string;
 }
