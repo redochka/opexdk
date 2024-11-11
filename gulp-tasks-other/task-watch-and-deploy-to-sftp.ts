@@ -1,21 +1,22 @@
-const {argv: args} = require("yargs");
-const log = require("fancy-log");
-const prompt = require("prompt");
-module.exports = function (extension) {
+import gulp from "gulp";
+import {cu} from "../gulp-includes/common-utils-ts";
+import log from "fancy-log";
+import watchDir from "./task-watch-and-deploy-to-xxx-common";
+import {SftpSpeaker} from "../lib/utils/sftp-speaker";
+import {watchSftpArgs} from "../lib/utils/args-utils";
+import {ExtensionManifestPackaging, ServerConfig} from "../lib/utils/types/opexdk.types";
+import prompt from "prompt";
 
-    const gulp            = require('gulp');
-    const args            = require('yargs').argv;
-    const prompt          = require('prompt');
-    const cu              = require("../gulp-includes/common-utils.js");
-    const log             = require('fancy-log');
-    const watchDir        = require('./task-watch-and-deploy-to-xxx-common');
-    let sftpDeployer = require("../lib/utils/sftp-speaker")(extension);
+module.exports = function (extension: ExtensionManifestPackaging) {
+
+    let sftpDeployer = SftpSpeaker();
 
     let defaultOru = "";
     if(extension.devSpec && extension.devSpec.watchTask && extension.devSpec.watchTask.ocmodRefreshUrl){
         defaultOru = extension.devSpec.watchTask.ocmodRefreshUrl;
     }
-    let serverConfig;
+
+    let serverConfig: ServerConfig;
 
     /**
      *
@@ -28,9 +29,7 @@ module.exports = function (extension) {
         dirs.forEach(function (dir) {
             watchDir(dir, serverConfig.remoteDir, sftpDeployer.uploadFile, defaultOru);
         });
-
     };
-
 
     /**
      *
@@ -42,6 +41,8 @@ module.exports = function (extension) {
          */
         serverConfig = sftpDeployer.connectToSftp(()=>{
         });
+
+        const args = watchSftpArgs();
 
         if (args.yes) {
             log("★ yes args passed");
@@ -58,7 +59,7 @@ module.exports = function (extension) {
                         description: ("Do you confirm oc folder: ").red + (serverConfig.host + ":" + serverConfig.remoteDir).magenta
                     }
                 }
-            }, function (err, result) {
+            }, function (_err, result) {
                 if (result.ocfolder === 'y') {
                     watchExtensionAndItsDependency();
                 }

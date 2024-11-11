@@ -27,3 +27,9 @@ export const deployCompiledSftpArgs = () => {
     server: {type: 'string', demandOption: true}
   }).parseSync()
 };
+
+export const watchSftpArgs = () => {
+  return yargs(hideBin(process.argv)).options({
+    yes: {type: 'boolean', demandOption: true}
+  }).parseSync()
+};

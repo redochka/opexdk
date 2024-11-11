@@ -5,6 +5,7 @@ export interface ExtensionManifestPackaging extends ExtensionManifest {
 export interface ExtensionManifest {
   devSpec: {
     watchTask: {
+      ocmodRefreshUrl: string;
       defaultTarget: string;
     };
   };

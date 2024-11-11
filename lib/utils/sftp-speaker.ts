@@ -56,7 +56,7 @@ export const SftpSpeaker = function () {
   /**
    * This sftp node module requires to specify the destination file (not just only the directory)
    */
-  let uploadFile = function (sourcePath, remotePath, cb = null) {
+  let uploadFile = function (sourcePath: string, remotePath: string, cb = null) {
 
     log("Uploading %s to %s", (sourcePath.split('public/module')[1]).magenta, (remotePath).magenta);
 
