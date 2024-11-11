@@ -17,6 +17,10 @@ function loadTasks(slug = null) {
     "m": args.m
   });
 
+  if (task==="test2") {
+    require('./gulp-tasks-other/task-zzz-test')();
+  }
+
   if (extensionManifest) {
 
     extensionManifest.private_build_dir = "";
@@ -70,19 +74,27 @@ function loadTasks(slug = null) {
 
   } else {
     // console.log(("✘ Extension: " + args.m + " not found.").yellow);
-    console.log(("✘ Extension: " + args.m + " not found."));
+    console.log(`✘ Extension: ${args.m} not found.`.red);
 
     if (task==="create") {
       require('./gulp-tasks-other/task-create')();
+
+    } else if (task==="create-simple") {
+      require('./gulp-tasks-other/task-create-simple')();
+
+    } else if (task==="translate-to-vqmod") {
+      require('./gulp-tasks-other/task-translate-ocmod-to-vqmod.js')();
+
+    } else if (task==="translate-to-ocmod") {
+      require('./gulp-tasks-other/task-translate-vqmod-to-ocmod.js')();
+
+    } else {
+      console.log(`Task not support ${task}`.red);
+      process.exit(1);
     }
-    require('./gulp-tasks-other/task-create-simple')();
-    require('./gulp-tasks-other/task-translate-ocmod-to-vqmod.js')();
-    require('./gulp-tasks-other/task-translate-vqmod-to-ocmod.js')();
   }
 
-  if (task==="test2") {
-    require('./gulp-tasks-other/task-zzz-test')();
-  }
+
 }
 
 //node bin/index-global.js test -m toto --oru "http://opencart.me/demo_offerz/index.php?route=extension/module/ocmod_refresh&secret=2105"
