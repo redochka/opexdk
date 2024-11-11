@@ -1,15 +1,13 @@
 import gulp from "gulp";
 import fs from "fs-extra";
 import path from "path";
-import debug0 from "debug";
+import debug from "debug";
 import 'colorts/lib/string'
 import {createSimpleArgs} from "../lib/utils/args-utils";
 
-console.log("0 create-simple loaded".red)
-
 module.exports = function () {
 
-  const debug = debug0("create-simple");
+  const d = debug("create-simple");
 
   /**
    * Create a simple structure for new module development
@@ -35,10 +33,10 @@ module.exports = function () {
 - Initial release`;
 
     const homeEnv = process.env.OPEXDK_SRC_PATH;
-    debug("★ homeEnv: ", homeEnv);
+    d(`homeEnv: ${homeEnv}`.red);
     const homes = homeEnv.split(",");
     const home = homes.pop();
-    debug(home);
+    d(`home folder is ${home}`.red);
 
     const pathToRoot = path.join(home, moduleName);
     const pathToPublic = path.join(pathToRoot, 'public');
