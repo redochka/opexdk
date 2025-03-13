@@ -1,5 +1,6 @@
 export interface ExtensionManifestPackaging extends ExtensionManifest {
   dir: any;
+  private_dist_dir: string
 }
 
 export interface ExtensionManifest {
@@ -9,6 +10,11 @@ export interface ExtensionManifest {
       defaultTarget: string;
     };
   };
+  opexBuilder: {
+    readme : {
+      inject: boolean
+    }
+  }
   dependencies: string[];
   finalName: string;
   version: string;

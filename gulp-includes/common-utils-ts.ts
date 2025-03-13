@@ -18,6 +18,10 @@ export const cu = {
     return s;
   },
 
+  /**
+   * @deprecated
+   * @see buildPublicNameOfDelivery2
+   */
   getPublicNameOfDelivery: function (extension: ExtensionManifestPackaging, args: any) {
 
     /*
@@ -33,6 +37,10 @@ export const cu = {
      *
      */
     return extension.finalName + '-version-' + extension.version + adminFolderSuffix;
+  },
+
+  buildPublicNameOfDelivery: function (extension: ExtensionManifestPackaging, suffix?: string) {
+    return [extension.finalName, "version", extension.version, suffix].filter(Boolean).join("-");
   },
 
   /**
@@ -60,13 +68,28 @@ export const cu = {
     return path.join(this.getOutputDirAbsPath(), "zips");
   },
 
+  /**
+   * @deprecated
+   * @see buildPathToExtensionBuildFolder
+   */
   getPathToExtensionBuildFolder: function (extensionFinalName: string, extension: { private_build_dir: string; }) {
     return path.join(this.getBuildDirAbsPath(), extension.private_build_dir, extensionFinalName);
   },
+  buildPathToExtensionBuildFolder: function (extensionFinalName: string, private_build_dir: string | undefined) {
+    return path.join(this.getBuildDirAbsPath(), private_build_dir || "", extensionFinalName);
+  },
 
 
+  /**
+   * @deprecated
+   * @see getPathToExtensionDistFolder2
+   */
   getPathToExtensionDistFolder: function (extensionFinalName: any, extension: { private_dist_dir: any; }) {
     return path.join(this.getDistDirAbsPath(), `${extension.private_dist_dir}/${extensionFinalName}`);
+  },
+
+  getPathToExtensionDistFolder2: function (extensionFinalName: string, private_dist_dir: string) {
+    return path.join(this.getDistDirAbsPath(), `${private_dist_dir}/${extensionFinalName}`);
   },
 
   getPathToExtensionOcmodDistFolder: function (extensionFinalName: any, extension: any) {

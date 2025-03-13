@@ -6,9 +6,10 @@ import {cu} from "../gulp-includes/common-utils-ts";
 import fs from "fs";
 import path from "path";
 import {argv as args} from "yargs";
+import {ExtensionManifestPackaging} from "../lib/utils/types/opexdk.types";
 
 
-module.exports = function (extension) {
+module.exports = function (extension: ExtensionManifestPackaging) {
     gulp.task('translate-markdown-to-html-from-dist', gulp.series('rename-package-for-cloud', function (done) {
 
         /*
@@ -29,7 +30,7 @@ module.exports = function (extension) {
          *
          */
         const FINAL_FILENAME  = cu.getPublicNameOfDelivery(extension, args);
-        const MY_DIST_DIR     = cu.getPathToExtensionDistFolder(FINAL_FILENAME, extension);
+        const MY_DIST_DIR     = cu.getPathToExtensionDistFolder2(FINAL_FILENAME, extension.private_dist_dir);
 
 
         /*

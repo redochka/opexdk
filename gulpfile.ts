@@ -45,7 +45,7 @@ function loadTasks(slug = null) {
     require('./gulp-tasks-build/3500-task-merge-ocmod-install')(extensionManifest);
     require('./gulp-tasks-build/3800-task-fix-install-dot-ocmod-xml')(extensionManifest);
     require('./gulp-tasks-build/4100-task-preserve-upload-folder.js')(extensionManifest);
-    require('./gulp-tasks-build/4400-task-package-ocmod.js')(extensionManifest);
+    require('./gulp-tasks-build/4400-task-package-ocmod')(extensionManifest);
     require('./gulp-tasks-build/4500-task-rename-package-for-cloud')(extensionManifest);
     require('./gulp-tasks-build/4700-translate-markdown-to-html-from-dist')(extensionManifest);
     require('./gulp-tasks-build/task-package-legacy.js')(extensionManifest);

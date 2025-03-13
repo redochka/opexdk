@@ -28,6 +28,14 @@ export const createSimpleArgs = () => {
   }).parseSync()
 };
 
+export const packageArgs = () => {
+  return yargs(hideBin(process.argv)).options({
+    ocmod: {type: 'boolean', demandOption: false},
+    admin: {type: 'string', demandOption: false}
+  }).parseSync()
+};
+
+
 export const deployCompiledSftpArgs = () => {
   return yargs(hideBin(process.argv)).options({
     server: {type: 'string', demandOption: true}
