@@ -72,7 +72,7 @@ export const cu = {
    * @deprecated
    * @see buildPathToExtensionBuildFolder
    */
-  getPathToExtensionBuildFolder: function (extensionFinalName: string, extension: { private_build_dir: string; }) {
+  getPathToExtensionBuildFolder  : function (extensionFinalName: string, extension: { private_build_dir: string; }) {
     return path.join(this.getBuildDirAbsPath(), extension.private_build_dir, extensionFinalName);
   },
   buildPathToExtensionBuildFolder: function (extensionFinalName: string, private_build_dir: string | undefined) {
@@ -123,7 +123,7 @@ export const cu = {
     /*
      *
      */
-    const result    = [];
+    const result = [];
 
     extension.dependencies.forEach(function (depDirName) {
       console.log("★ Dep is: ", depDirName);
@@ -175,7 +175,11 @@ export const cu = {
     }
 
     if (ocFolder) {
-      return path.join(process.env.OPEXDK_VHOST_PATH, ocFolder);
+      if (path.isAbsolute(ocFolder)) {
+        return ocFolder;
+      } else {
+        return path.join(process.env.OPEXDK_VHOST_PATH, ocFolder);
+      }
     } else {
       log.error("Please specify -o flag or defaultTarget in extension manifest!");
     }
