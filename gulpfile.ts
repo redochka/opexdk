@@ -1,15 +1,10 @@
 import randomstring from "randomstring";
 import 'colorts/lib/string'
-import {gulpArgs} from "./lib/utils/args-utils";
 import gulp from "gulp";
 
-// let args = require('yargs').argv;
-const args = gulpArgs();
+let args = require('yargs').argv;
 
-function loadTasks(slug = null) {
-  if (slug) {
-    args.m = slug;
-  }
+function loadTasks() {
 
   const task = args._.length > 0 ? args._[0]:args.t
 

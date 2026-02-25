@@ -52,6 +52,6 @@ module.exports = function () {
     fs.outputFileSync(path.join(pathToPublic, 'changelog.md'), changelogFileContent);
 
     console.log("Extension created in: ".green, pathToRoot);
-    require('../lib/utils/opexdk-notifier').notify("Extension created!");
+    require('../lib/utils/opexdk-notifier').notify("Extension created 🎉");
   });
 }

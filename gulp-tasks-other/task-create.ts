@@ -67,11 +67,11 @@ module.exports = function (_extension: any) {
 
    opexdk create --skeleton skel_oc30 --displayName "CACS admin"      --finalName cacs-admin-oc3 --shortName cacs-admin-oc3 --capitalCamel Cacs         --underscore cacs
    opexdk create --skeleton skel_oc30 \
-   --displayName "Customily"       \
-   --finalName customily-oc3  \
-   --shortName customily-oc3  \
-   --capitalCamel Customily    \
-   --underscore customily
+   --displayName "Cazasouq Inventory Query — Cinq"       \
+   --finalName Cinq-oc3  \
+   --shortName Cinq-oc3  \
+   --capitalCamel Cinq    \
+   --underscore cinq
    */
   gulp.task('create_from_skeleton', function () {
 
