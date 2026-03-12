@@ -8,7 +8,7 @@ export const SftpSpeaker = function () {
   let serverConfig: ServerConfig;
 
 
-  let connectToSftp = function (callback) {
+  let connectToSftp = function (callback=null) {
 
     const args = deployCompiledSftpArgs();
 

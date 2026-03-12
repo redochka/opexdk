@@ -3,7 +3,6 @@ import 'colorts/lib/string'
 import gulp from "gulp";
 import {hideBin} from "yargs/helpers";
 let args = require('yargs')(hideBin(process.argv)).parse();
-console.log("xxx", args);
 
 function loadTasks() {
 

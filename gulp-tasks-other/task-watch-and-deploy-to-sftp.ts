@@ -7,66 +7,80 @@ import {watchSftpArgs} from "../lib/utils/args-utils";
 import {ExtensionManifestPackaging, ServerConfig} from "../lib/utils/types/opexdk.types";
 import prompt from "prompt";
 
-module.exports = function (extension: ExtensionManifestPackaging) {
+module.exports = function (extensionManifest: ExtensionManifestPackaging) {
 
-    let sftpDeployer = SftpSpeaker();
+  let sftpSpeaker = SftpSpeaker();
 
-    let defaultOru = "";
-    if(extension.devSpec && extension.devSpec.watchTask && extension.devSpec.watchTask.ocmodRefreshUrl){
-        defaultOru = extension.devSpec.watchTask.ocmodRefreshUrl;
-    }
+  let defaultOru = "";
+  if (extensionManifest.devSpec && extensionManifest.devSpec.watchTask && extensionManifest.devSpec.watchTask.ocmodRefreshUrl) {
+    defaultOru = extensionManifest.devSpec.watchTask.ocmodRefreshUrl;
+  }
 
-    let serverConfig: ServerConfig;
+  let serverConfig: ServerConfig;
 
-    /**
-     *
+  /**
+   *
+   */
+  let watchExtensionAndItsDependency = function () {
+    log.info("Watching extension and its dependency");
+
+    let dirs = cu.getExtensionAndDepsDirs(extensionManifest);
+
+    dirs.forEach(function (dir) {
+      watchDir(dir, serverConfig.remoteDir, sftpSpeaker.uploadFile, defaultOru);
+    });
+  };
+
+  /**
+   *
+   */
+  gulp.task('watch-sftp', function () {
+
+    /*
+     * Get our destination
      */
-    let watchExtensionAndItsDependency = function () {
-        log.info("Watching extension and its dependency");
+    serverConfig = sftpSpeaker.connectToSftp();
 
-        let dirs = cu.getExtensionAndDepsDirs(extension);
+    const args = watchSftpArgs();
 
-        dirs.forEach(function (dir) {
-            watchDir(dir, serverConfig.remoteDir, sftpDeployer.uploadFile, defaultOru);
-        });
+    const startWatch = function () {
+      if (args.yes) {
+        log("★ yes args passed");
+        watchExtensionAndItsDependency();
+        return;
+      }
+
+      prompt.message = "\n";
+      prompt.delimiter = "\n";
+
+      prompt.start();
+
+      prompt.get({
+        properties: {
+          ocfolder: {
+            description: ("Do you confirm oc folder: ").red + (serverConfig.host + ":" + serverConfig.remoteDir).magenta
+          }
+        }
+      }, function (_err, result) {
+        if (result.ocfolder==='y') {
+          watchExtensionAndItsDependency();
+        }
+      });
     };
 
-    /**
-     *
-     */
-    gulp.task('watch-sftp', function () {
+    if (args.deploy) {
+      return gulp.series('deploy-compiled-sftp', (done) => {
+        log("Done running task deploy-compiled-sftp.");
+        startWatch();
+        done();
+      })((error) => {
+        error && console.error(error);
+      });
 
-        /*
-         * Get our destination
-         */
-        serverConfig = sftpDeployer.connectToSftp(()=>{
-        });
+    } else {
+      startWatch();
+    }
 
-        const args = watchSftpArgs();
-
-        if (args.yes) {
-            log("★ yes args passed");
-            watchExtensionAndItsDependency();
-        } else {
-            prompt.message   = "\n";
-            prompt.delimiter = "\n";
-
-            prompt.start();
-
-            prompt.get({
-                properties: {
-                    ocfolder: {
-                        description: ("Do you confirm oc folder: ").red + (serverConfig.host + ":" + serverConfig.remoteDir).magenta
-                    }
-                }
-            }, function (_err, result) {
-                if (result.ocfolder === 'y') {
-                    watchExtensionAndItsDependency();
-                }
-            });
-        }
-
-
-    });
+  });
 
 };

@@ -103,6 +103,8 @@ opexdk watch-ftp -m my-extension --server my-ftp-server.ftp.xml
 
 ```sh
 opexdk watch-sftp -m my-extension --server my-sftp-server.sftp.xml 
+# [--yes] to skip confirmation
+# [--deploy] to compile the extension and deploy files to the server in addition to the watch task.
 ```
 
 - Deploy all files from `my-extension` folder:
@@ -201,10 +203,10 @@ We have our own extension-duplicator, some similar projects:
 
 There are two types of scaffolding: light and fully fledged 
 
-#### Create an extension from a light scaffolding 
+#### Create an extension from light scaffolding 
 
 This kind of extension will not have an admin controller nor a setting page. 
-- Useful to create file structure that will hold your php files and vqmod files to get started testing things.
+- Useful to create a file structure that will hold your PHP files and VQMOD files to get started testing things.
 - Useful also for library extensions.
 
 ```sh

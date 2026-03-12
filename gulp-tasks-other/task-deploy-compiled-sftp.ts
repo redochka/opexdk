@@ -42,9 +42,9 @@ module.exports = function (extension: ExtensionManifestPackaging) {
     const srcPath = path.join(MY_VQMOD_LEGACY_DIST_FOLDER, 'upload');
 
     log("✔ SFTP deploy from: %s to: %s".yellow, srcPath, serverConfig.host);
-    uploadFile(srcPath, serverConfig.remoteDir, serverConfig, null);
+    uploadFile(srcPath, serverConfig.remoteDir, serverConfig, done);
 
-    done();
+    // done();
   };
 
 
