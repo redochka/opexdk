@@ -1,8 +1,10 @@
 import debug0 from "debug";
 import gulp from "gulp";
 import zip from "gulp-zip";
-import {argv as args} from "yargs";
 import {cu} from "../gulp-includes/common-utils-ts";
+import yargs from "yargs";
+import {hideBin} from "yargs/helpers";
+const args = yargs(hideBin(process.argv)).parse()
 
 const debug = debug0('package');
 debug("task-package: loading...");

@@ -10,7 +10,7 @@ module.exports = function (extension) {
 
     let gulp       = require('gulp');
     let gulpif     = require('gulp-if');
-    let gulpFilter = require('gulp-filter');
+    let gulpFilter = require('gulp-filter').default;
     let cheerio    = require('gulp-cheerio');
     let replace    = require('gulp-replace');
     let cu         = require("../gulp-includes/common-utils.js");

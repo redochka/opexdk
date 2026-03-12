@@ -3,7 +3,9 @@ import insert from "gulp-insert";
 import markdown from "gulp-markdown";    //it uses marked. See https://github.com/chjj/marked/issues/119 for adding CSS.
 import rename from "gulp-rename";
 import {cu} from "../gulp-includes/common-utils-ts";
-import {argv as args} from "yargs";
+import {hideBin} from "yargs/helpers";
+import yargs from "yargs";
+const args = yargs(hideBin(process.argv)).parse()
 
 module.exports = function (extension) {
   gulp.task('markdown', gulp.series('renameadmin', function () {

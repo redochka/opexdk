@@ -5,7 +5,7 @@ if (args.vv) console.log("task-package-ocmod: loading...");
 module.exports = function (extension) {
 
     var gulp    = require('gulp');
-    var zip     = require('gulp-zip');
+    var zip     = require('gulp-zip').default;
     var cu      = require("../gulp-includes/common-utils.js");
     var walk    = require('walkdir');    //we used walk instead of findit because of sync. Sync causes stack error.. node --stack-size=32000 node_modules/gulp/bin/gulp.js
     var path    = require('path');

@@ -5,7 +5,7 @@ if(args.vv) console.log(("Loading " + __filename).grey);
 module.exports = function(extension){
 
     var gulp     = require('gulp');
-    var zip      = require('gulp-zip');
+    var zip      = require('gulp-zip').default;
     var cu       = require("../gulp-includes/common-utils.js");
 
     gulp.task('package-legacy', gulp.series('rename-module-to-upload', function () {

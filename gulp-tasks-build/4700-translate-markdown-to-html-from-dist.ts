@@ -5,8 +5,10 @@ import rename from "gulp-rename";
 import {cu} from "../gulp-includes/common-utils-ts";
 import fs from "fs";
 import path from "path";
-import {argv as args} from "yargs";
 import {ExtensionManifestPackaging} from "../lib/utils/types/opexdk.types";
+import yargs from "yargs";
+import {hideBin} from "yargs/helpers";
+const args = yargs(hideBin(process.argv)).parse()
 
 
 module.exports = function (extension: ExtensionManifestPackaging) {
