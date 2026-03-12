@@ -2,7 +2,8 @@ console.log("load-extension: loading...");
 
 var walk    = require('walk');    //we used walk instead of findit because of sync. Sync causes stack error.. node --stack-size=32000 node_modules/gulp/bin/gulp.js
 var path    = require('path');
-var args    = require('yargs').argv;
+const {hideBin} = require("yargs/helpers");
+var args    = require('yargs')(hideBin(process.argv)).parse();
 
 let extensionDir = "";
 

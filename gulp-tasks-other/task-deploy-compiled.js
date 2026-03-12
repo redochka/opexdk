@@ -4,7 +4,8 @@ module.exports = function (extension) {
 
     const gulp = require('gulp');
     const cu   = require("../gulp-includes/common-utils.js");
-    const args = require('yargs').argv;
+    const {hideBin} = require("yargs/helpers");
+    const args = require('yargs')(hideBin(process.argv)).parse();
 
     /**
      * gulp deploy-compiled -m tsp --sandbox -o '/tmp/'

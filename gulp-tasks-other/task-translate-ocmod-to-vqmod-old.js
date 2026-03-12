@@ -1,4 +1,5 @@
-var args    = require('yargs').argv;
+const {hideBin} = require("yargs/helpers");
+var args    = require('yargs')(hideBin(process.argv)).parse();
 if(args.vv) console.log("task-ocmod-to-vqmod: loading...");
 
 /*
@@ -22,7 +23,8 @@ module.exports = function(){
     
     const gulp    = require('gulp');
     const gulpif  = require('gulp-if');
-    const args    = require('yargs').argv;
+    const {hideBin} = require("yargs/helpers");
+    const args    = require('yargs')(hideBin(process.argv)).parse();
     const cheerio = require('gulp-cheerio');
     const rename  = require("gulp-rename");
     const replace = require('gulp-replace');

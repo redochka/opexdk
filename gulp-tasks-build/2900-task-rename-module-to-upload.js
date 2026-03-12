@@ -1,4 +1,5 @@
-const args    = require('yargs').argv;
+const {hideBin} = require("yargs/helpers");
+const args    = require('yargs')(hideBin(process.argv)).parse();
 if(args.vv) console.log("[task-rename-module-to-upload] loading...");
 
 module.exports = function(extension){

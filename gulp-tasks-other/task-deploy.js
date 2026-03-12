@@ -1,4 +1,5 @@
-let args = require('yargs').argv;
+const {hideBin} = require("yargs/helpers");
+let args = require('yargs')(hideBin(process.argv)).parse();
 
 /**
  *

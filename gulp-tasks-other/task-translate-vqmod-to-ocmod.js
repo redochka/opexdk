@@ -21,7 +21,8 @@ module.exports = function () {
      */
 
     const gulp       = require('gulp');
-    const args       = require('yargs').argv;
+    const {hideBin} = require("yargs/helpers");
+    const args       = require('yargs')(hideBin(process.argv)).parse();
     const path       = require("path");
     const vqmodUtils = require("../lib/utils/vqmod-utils");
 

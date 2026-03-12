@@ -1,4 +1,5 @@
-var args    = require('yargs').argv;
+const {hideBin} = require("yargs/helpers");
+var args    = require('yargs')(hideBin(process.argv)).parse();
 if(args.vv) console.log("task-package-ocmod: loading...");
 
 module.exports = function(extension){

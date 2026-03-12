@@ -3,7 +3,8 @@ const path       = require('path');
 const fs         = require("fs-extra");
 const log        = require('fancy-log');
 const axios      = require("axios");
-const args       = require('yargs').argv;
+const {hideBin} = require("yargs/helpers");
+const args       = require('yargs')(hideBin(process.argv)).parse();
 const vqmodUtils = require("../lib/utils/vqmod-utils");
 
 let watchDir = function (dir, remoteDir, uploadFile, defaultOru) {

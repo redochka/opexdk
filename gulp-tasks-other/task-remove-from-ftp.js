@@ -5,7 +5,8 @@
 module.exports = function (extension) {
 
     const gulp = require('gulp');
-    const args = require('yargs').argv;
+    const {hideBin} = require("yargs/helpers");
+    const args = require('yargs')(hideBin(process.argv)).parse();
     const cu   = require("../gulp-includes/common-utils.js");
     const ftp  = require('vinyl-ftp');    //formerly known as gulp-ftp
     const log  = require('fancy-log');

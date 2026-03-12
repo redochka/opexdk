@@ -1,8 +1,9 @@
 import randomstring from "randomstring";
 import 'colorts/lib/string'
 import gulp from "gulp";
-
-let args = require('yargs').argv;
+import {hideBin} from "yargs/helpers";
+let args = require('yargs')(hideBin(process.argv)).parse();
+console.log("xxx", args);
 
 function loadTasks() {
 
@@ -94,7 +95,8 @@ function loadTasks() {
 
 //node bin/index-global.js test -m toto --oru "http://opencart.me/demo_offerz/index.php?route=extension/module/ocmod_refresh&secret=2105"
 gulp.task("test", function () {
-  let args = require('yargs').argv;
+  const {hideBin} = require("yargs/helpers");
+  let args = require('yargs')(hideBin(process.argv)).parse();
   console.log("inside the test task.");
   console.log("module: ", args.m);
   console.log("output: ", args.o);
